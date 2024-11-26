@@ -9,6 +9,17 @@
 <body>
     <div class="container">
         <h1>Estoque Online</h1>
+
+        <form id="productForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required />
+            
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" required />
+            
+            <button type="submit">Enviar</button>
+          </form>
+          
         <table>
             <thead>
                 <tr>
@@ -20,6 +31,6 @@
             <tbody id="product-list"></tbody>
         </table>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>

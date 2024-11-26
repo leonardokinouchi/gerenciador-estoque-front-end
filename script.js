@@ -58,8 +58,8 @@ async function renderProducts() {
                 <td>${product.nome}</td>
                 <td>${product.quantidade}</td>
                 <td>
-                    <button id="add_button" onclick="adicionarProduct('${product._id}')">+</button>
-                    <button id="rem_button" onclick="retirarProduct('${product._id}')">-</button>
+                    <button id="add_button" onclick="adicionarProduct('${product._id}', true)">+</button>
+                    <button id="rem_button" onclick="adicionarProduct('${product._id}', false)">-</button>
                     <button onclick="deleteProduct('${product._id}')">Deletar</button>
                 </td>
             `
@@ -71,17 +71,32 @@ async function renderProducts() {
 }
 
 async function deleteProduct(id){
-    try{
-        const response = await fetch(`${Url_base}/produtos/${id}`, {method: 'DELETE'})
-        console.log(response)
-        renderProducts()
-    } catch(err){
-        console.log("error")
-    }
+  try{
+    const response = await fetch(`${Url_base}/produtos/${id}`, {method: 'DELETE'})
+    console.log(response)
+    renderProducts()
+  }catch(err){
+    console.log("error")
+  }
 }
 
-function adicionarProduct(id){
-    console.log(`${id}`)
+async function adicionarProduct(id, metodo){
+  try{
+    const response = await fetch(`${Url_base}/produtos/${id}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        metodo: metodo
+      }),
+    })
+    console.log(response)
+    renderProducts()
+  }catch(err){
+    console.log("error")
+  }
+  
 }
 
 

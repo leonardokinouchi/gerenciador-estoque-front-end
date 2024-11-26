@@ -1,7 +1,7 @@
 // Seleciona o tbody
 const productList = document.getElementById("product-list");
 
-const Url_base = "http://localhost:3000"
+const Url_base = "https://gerenciador-estoque-back-end-leos-projects-97658901.vercel.app/"
 
 const form = document.getElementById("productForm");
 
